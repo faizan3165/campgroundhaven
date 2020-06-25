@@ -26,9 +26,7 @@
 
 
 
-// MONGOOSE CONFIG // 
-// "mongodb://localhost:27017/yelp_camp"
-// "mongodb+srv://Faizan:faizanmehmood@cluster0-hbjic.mongodb.net/yelpcamp?retryWrites=true&w=majority"
+// MONGOOSE CONFIG
 // ===============================================================
     mongoose.connect(process.env.DATABASEURL,{
       useNewUrlParser: true,                                   
