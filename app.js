@@ -16,6 +16,7 @@
 
 
 
+
 // REQUIRING ROUTES
 // =========================================================
     var campgroundsRoutes = require("./routes/campgrounds"),                                                                                                                              
@@ -27,9 +28,9 @@
 
 // MONGOOSE CONFIG // 
 // "mongodb://localhost:27017/yelp_camp"
-// 
+// "mongodb+srv://Faizan:faizanmehmood@cluster0-hbjic.mongodb.net/yelpcamp?retryWrites=true&w=majority"
 // ===============================================================
-    mongoose.connect("mongodb+srv://Faizan:faizanmehmood@cluster0-hbjic.mongodb.net/yelpcamp?retryWrites=true&w=majority",{
+    mongoose.connect(process.env.DATABASEURL,{
       useNewUrlParser: true,                                   
       useUnifiedTopology: true                               
     });                                                          
