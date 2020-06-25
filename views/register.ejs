@@ -1,0 +1,45 @@
+<%- include ('./partials/header') -%>
+
+<div class="row">
+    
+    <div class="col-md-12">
+    
+        <form class="form-signin" action="/register" method="POST">
+    
+            <h1 class="h3 mb-3 font-weight-normal">Please sign up</h1>
+    
+            <label for="inputUsername" class="sr-only">Username</label>    
+            <input type="text" id="inputUsername" class="form-control" name="username" placeholder="Username" required autofocus>
+    
+            <label for="inputPassword" class="sr-only">Password</label>    
+            <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password" required>
+
+            <label for="firstName" class="sr-only">First Name</label>    
+            <input type="text" id="firstName" class="form-control" name="firstName" placeholder="First Name" required autofocus>
+
+            <label for="lastName" class="sr-only">Last Name</label>    
+            <input type="text" id="lastName" class="form-control" name="lastName" placeholder="Last Name" required autofocus>
+
+            <label for="email" class="sr-only">Email</label>    
+            <input type="text" id="email" class="form-control" name="email" placeholder="Email" required autofocus>
+
+            <label for="avatar" class="sr-only">Avatar</label>    
+            <input type="url" id="avatar" class="form-control" name="avatar" placeholder="Avatar" required autofocus>
+
+            <label for="secretCode" class="sr-only ">Admin Code</label>
+            <input type="text" id="secretCode" class="form-control" name="adminCode" placeholder="secretCode">
+
+            <button class="btn btn-lg btn-primary btn-block" id="button" type="submit">Sign up</button>
+
+        </form>
+    
+        <div class="form-signin">
+    
+            <a href="/campgrounds">Go Back</a>
+    
+        </div>
+    
+    </div>
+</div>
+
+<%- include ('./partials/footer') -%>

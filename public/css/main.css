@@ -1,0 +1,187 @@
+a {
+    color: chartreuse;
+}
+
+
+label {
+    color: whitesmoke;
+}
+
+
+h1 {
+    color: wheat;
+}
+
+
+body {
+    background-image: url(http://bit.ly/2gPLxZ4); 
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: 'Roboto Condensed';
+}
+
+
+.jumbotron {
+    background-image: url(../img/header.jpeg); 
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    background-size: 100% 100%;
+    color: black;
+}
+
+
+.jumbotron h1 {
+    color: black;
+}
+
+
+.card-body {
+    background: black;
+    color: whitesmoke;
+}
+
+
+.card {
+    border: 2px solid red;
+    margin-bottom: 5px;
+}
+
+
+.margin {
+    margin: 10px;
+}
+
+
+.form-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+
+.form-signin .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+}
+
+
+.form-signin .form-control:focus {
+    z-index: 2;
+}
+
+
+.form-signin input[type="text"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+
+#secretCode.form-control {
+    margin: -12px 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+
+#firstName.form-control {
+    margin: -12px 0px 10px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+
+#lastName.form-control {
+    margin: -12px 0px 10px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+
+#email.form-control {
+    margin: -12px 0px 10px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+
+#avatar.form-control {
+    margin: -12px 0px 10px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+
+#button {
+    margin: 12px 0px 0px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+
+.container .text-muted {
+    margin: 20px 0;
+}
+
+
+.thumbnail img {
+    width: 100%;
+}
+
+
+.thumbnail {
+    padding: 0;
+}
+
+
+.thumbnail .caption-full {
+    padding: 9px;
+}
+
+
+.delete-form {
+    display: inline-block;
+}
+
+
+.h3 {
+    color: antiquewhite;
+    text-align: center;
+}
+
+
+.heading {
+    color: antiquewhite;
+}
+
+
+#border {
+    height: 200px;
+}
+
+
+.height {
+    height: 500px;
+}
+
+
+#body {
+    background: black;
+    color: whitesmoke;
+}
