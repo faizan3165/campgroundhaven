@@ -1,5 +1,12 @@
+h1 {
+    color: red;
+}
+
+
 body {
     background-color: #000;
+    font-family: 'Roboto Condensed';
+    font-weight: 900;
 }
 
 #landing-header {
@@ -10,7 +17,7 @@ body {
 }
 
 #landing-header h1 {
-    color: #fff;
+    color: red;
 }
 
 .slideshow { 
