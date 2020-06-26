@@ -30,7 +30,9 @@
 // ===============================================================
     mongoose.connect(process.env.DATABASEURL,{
       useNewUrlParser: true,                                   
-      useUnifiedTopology: true                               
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+      useFindAndModify: false                               
     });                                                          
 // ===============================================================
 
@@ -46,7 +48,7 @@
     // seedDb();
 // ===================================================
 
-
+    
 
 // PASSPORT CONFIG
 // =====================================================
@@ -78,7 +80,7 @@
 // ======================================================
     app.use("/", authRoutes);
     app.use("/campgrounds", campgroundsRoutes);
-    app.use("/campgrounds/:id/comments", commentRoutes);
+    app.use("/campgrounds/:slug/comments", commentRoutes);
 // ======================================================
 
 

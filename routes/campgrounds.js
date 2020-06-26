@@ -43,21 +43,19 @@ router.get("/new", middleware.isLoggedIn, function(req, res){
 });
 
 // SHOW ROUTE
-router.get("/:id", function(req, res){
-  Campground.findById(req.params.id).populate("comments").exec(function(err, foundCampground){
+router.get("/:slug", function(req, res){
+  Campground.findOne({slug: req.params.slug}).populate("comments").exec(function(err, foundCampground){
       if(err){
           console.log(err);
       } else {
-          console.log(foundCampground);
           res.render("campgrounds/show", {campground: foundCampground});
       }
   });
 });
 
 // EDIT ROUTE
-router.get("/:id/edit", middleware.campgroundOwnership, function(req, res){
-  console.log("IN EDIT!");
-  Campground.findById(req.params.id, function(err, foundCampground){
+router.get("/:slug/edit", middleware.campgroundOwnership, function(req, res){
+  Campground.findOne({slug: req.params.slug}, function(err, foundCampground){
       if(err){
           console.log(err);
       } else {
@@ -67,28 +65,33 @@ router.get("/:id/edit", middleware.campgroundOwnership, function(req, res){
 });
 
 // UPDATE ROUTE
-router.put("/:id", middleware.campgroundOwnership, function(req, res){
-  var newData = {
-    name: req.body.name,
-    price: req.body.price,
-    image: req.body.image,
-    description: req.body.description
-  };
-  Campground.findByIdAndUpdate(req.params.id, {$set: newData}, function(err, campground){
-      if(err){
-          req.flash("error", err.message);
-          res.redirect("back");
-      } else {
-          req.flash("success","Successfully Updated!");
-          res.redirect("/campgrounds/" + campground._id);
-      }
+router.put("/:slug", middleware.campgroundOwnership, function(req, res){
+  Campground.findOne({slug: req.params.slug}, function(err, campground){
+    if(err){
+        res.redirect("/campgrounds");
+    } else {
+        campground.name        = req.body.campground.name;
+        campground.image       = req.body.campground.image;
+        campground.price       = req.body.campground.price
+        campground.description = req.body.campground.description;
+        campground.save(function (err) {
+          if(err){
+            console.log(err);
+            res.redirect("/campgrounds");
+          } else {
+            res.redirect("/campgrounds/" + campground.slug);
+          }
+        });
+    }
   });
 });
+
 // DELETE ROUTE
-router.delete("/:id", middleware.campgroundOwnership, function(req, res){
-  Campground.findByIdAndRemove(req.params.id, function(err){
+router.delete("/:slug", middleware.campgroundOwnership, function(req, res){
+  Campground.findOneAndRemove({slug: req.params.slug}, function(err){
     if(err) {
       console.log(err);
+      req.flash("error", err.message)
       return res.redirect("/campgrounds");
     }
     req.flash("success", "Campground deleted!");
