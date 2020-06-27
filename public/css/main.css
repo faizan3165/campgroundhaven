@@ -40,6 +40,12 @@ body {
 }
 
 
+.commentForm {
+    border: 2px solid red;
+    
+}
+
+
 .card-body {
     background: black;
     color: whitesmoke;
@@ -125,4 +131,10 @@ body {
 
 #likes {
     margin: 12px 0;
+}
+
+
+#editCard {
+    background: black;
+    color: whitesmoke;
 }
