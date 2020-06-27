@@ -13,10 +13,6 @@ var commentSchema = ({
         },
         username: String
     },
-    admin: {
-        type: Boolean,
-        default: false
-    }
 }); 
 
 module.exports =  mongoose.model("Comment",commentSchema);
