@@ -2,7 +2,8 @@
 // ========================================================
     var Campground      = require("./models/campgrounds"), 
         Comment         = require("./models/comment"),      
-        methodOverride  = require("method-override"),      
+        methodOverride  = require("method-override"),
+        favicon         = require('express-favicon'),      
         LocalStrategy   = require("passport-local"), 
         flash           = require("connect-flash"),      
         User            = require("./models/user"),        
@@ -23,7 +24,6 @@
         commentRoutes     = require("./routes/comments"),   
         authRoutes        = require("./routes/auth");       
 // =========================================================
-
 
 
 // MONGOOSE CONFIG

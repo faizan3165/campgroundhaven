@@ -6,13 +6,22 @@ var express    = require("express"),
     middleware = require("../middleware");
 
 // INDEX ROUTE
-router.get("/", function(req, res){
-  Campground.find({}, function(err, allCampgrounds){
-  if(err){
-    console.log(err);
-  } else {
-    res.render("campgrounds/index",{campgrounds: allCampgrounds});
-  }
+router.get("/", function (req, res) {
+  var perPage = 8;
+  var pageQuery = parseInt(req.query.page);
+  var pageNumber = pageQuery ? pageQuery : 1;
+  Campground.find({}).skip((perPage * pageNumber) - perPage).limit(perPage).exec(function (err, allCampgrounds) {
+    Campground.count().exec(function (err, count) {
+        if (err) {
+          req.flash("error", err.message);
+        } else {
+            res.render("campgrounds/index", {
+                campgrounds: allCampgrounds,
+                current: pageNumber,
+                pages: Math.ceil(count / perPage)
+            });
+        }
+    });
   });
 });
 
