@@ -86,8 +86,24 @@ body {
 }
 
 
+.badge.label-primary {
+    background: ghostwhite;
+    color: black;
+}
+
+
+.card-title {
+    color: antiquewhite;
+}
+
+
 .heading {
     color: antiquewhite;
+}
+
+
+.badge.label-primary {
+    margin-bottom: 10px;
 }
 
 
@@ -104,4 +120,9 @@ body {
 #body {
     background: black;
     color: whitesmoke;
+}
+
+
+#likes {
+    margin: 12px 0;
 }

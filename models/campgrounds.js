@@ -6,9 +6,11 @@ var mongoose   = require("mongoose"),
             type: String,
             required: "Campground name cannot be blank."
         },
+
         image: String,
         description: String,
         price: String,
+        
         author: {
             id: {
                 type: mongoose.Schema.Types.ObjectId,
@@ -16,16 +18,25 @@ var mongoose   = require("mongoose"),
             },
             username: String
         },
+        
         comments: [
             {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: "Comment"
             }
         ],
+        
         slug: {
             type: String,
             unique: true
-        }
+        },
+        
+        likes: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "User"
+            }
+        ]
     });
 
 campgroundSchema.pre('save', async function (next) {

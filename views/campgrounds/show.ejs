@@ -12,14 +12,65 @@
     
                 <div class="card-body">
     
-                    <p class="float-right">
+                    <div class="float-right">
+                        
+                        <p>
+                            
+                            $<%= campground.price %>/night
+
+                        </p>
+
+                        <form  action="/campgrounds/<%= campground.slug %>/like" method="post">
+                        
+                            <div class="btn-group">
+
+                                <% if (currentUser && campground.likes.some(function(like){
+
+                                    return like.equals(currentUser._id)
+
+                                })) { %>
+
+                                    <button class="btn btn-sm btn-primary">
+                                    
+                                        <i class="fas fa-thumbs-up"></i> Liked (<%= campground.likes.length %>)
+                                    
+                                    </button>
+                                
+                                <% } else { %>
+
+                                    <button class="btn btn-sm btn-secondary">
+                                    
+                                        <i class="fas fa-thumbs-up"></i> Like (<%= campground.likes.length %>)
+                                    
+                                    </button>
+
+                                <% } %>
+
+                                <button type="button" class="btn btn-sm btn-default" data-toggle="modal"
+                                
+                                    data-target="#campgroundLikes">See more details
+                                
+                                    </button>
+
+                            </div>
+
+                        </form>
     
-                        $<%= campground.price %>/night
-    
-                    </p>
+                    </div>
     
                     <h5 class="card-title"><%= campground.name %></h5>
     
+                    <div class="pull-right">
+
+                        <button id="likes" class="btn btn-xs btn-primary" type="button" data-toggle="modal" data-target = "#campgroundLikes">
+
+                            <span>Total Likes: <i class="fas fa-thumbs-up"></i> <%= campground.likes.length %> </span>
+
+                        </button>
+                    
+                    </div>
+
+
                     <p>
     
                         <em>Submitted by: <a href="/users/<%= campground.author.id %>"><%= campground.author.username %></a> %> <%= moment(campground.createdAt).fromNow() %></em>
@@ -122,5 +173,76 @@
     
     </div>
     
+</div>
+
+<div id="campgroundLikes" class="modal fade" role="dialog" tabindex="-1">
+
+    <div class="modal-dialog" role="document">
+    
+        <div class="modal-content">
+        
+            <div class="modal-header">
+                <h5 class="modal-title" id="campgroundLikes">Total Likes: <%= campground.likes.length %></h5>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                
+                    <span aria-hidden="true">&times;</span>
+                
+                </button>
+            
+            </div>
+
+            <div class="modal-body">
+                
+                <table class="table table-striped">
+                    
+                    <thead>
+                    
+                        <tr>
+                        
+                        <th>Liked By:</th>
+
+                        </tr>
+                    
+                    </thead>
+                    
+                    <tbody>
+                        
+                        <% campground.likes.forEach(function(like) { %>
+                            
+                            <tr>
+                            
+                            <td><span class="badge"><i class="fa fa-user"></i></span> <%= like.username %></td>
+                            
+                            </tr>
+
+                        <% }); %>
+
+                        <% if (campground.likes.length === 0) { %>
+                        
+                            <tr>
+                                
+                                <td><em>No Likes Yet</em></td>
+                                
+                            </tr>
+
+                        <% } %>
+                        
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <div class="modal-footer">
+            
+            <button class="btn btn-default" type="button" data-dismiss="modal">Close</button>
+            
+            </div>
+            
+        </div>
+
+    </div>
+
 </div>
 <%- include ('../partials/footer') -%>

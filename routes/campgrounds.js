@@ -44,12 +44,39 @@ router.get("/new", middleware.isLoggedIn, function(req, res){
 
 // SHOW ROUTE
 router.get("/:slug", function(req, res){
-  Campground.findOne({slug: req.params.slug}).populate("comments").exec(function(err, foundCampground){
+  Campground.findOne({slug: req.params.slug}).populate("comments likes").exec(function(err, foundCampground){
       if(err){
           console.log(err);
       } else {
           res.render("campgrounds/show", {campground: foundCampground});
       }
+  });
+});
+
+// LIKE ROUTE
+router.post("/:slug/like", middleware.isLoggedIn, function(req, res){
+  Campground.findOne({slug: req.params.slug}, function(err, foundCampground){
+    if(err) {
+      req.flash("error", err.message)
+      return res.redirect("/campgrounds");
+    }
+    var foundUserLike = foundCampground.likes.some(function(like){
+      return like.equals(req.user._id);
+    });
+    if(foundUserLike) {
+      foundCampground.likes.pull(req.user._id);
+      req.flash("error", "Like Removed!");
+    } else {
+      foundCampground.likes.push(req.user._id);
+      req.flash("success", "Like Added!");
+    }
+    foundCampground.save(function(err){
+      if(err) {
+        req.flash("error", err.message);
+        return res.redirect("/campgrounds");
+      }
+      return res.redirect("/campgrounds/" + foundCampground.slug);
+    });
   });
 });
 
