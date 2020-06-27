@@ -12,6 +12,10 @@ var commentSchema = ({
             ref:  "User"
         },
         username: String
+    },
+    admin: {
+        type: Boolean,
+        default: false
     }
 }); 
 

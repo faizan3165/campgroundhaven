@@ -85,7 +85,7 @@
 
                     </p>
     
-                    <% if(currentUser && campground.author.id.equals(currentUser._id) || currentUser && currentUser.admin){ %>
+                    <% if(currentUser && currentUser._id.equals(comment.author.id) || currentUser && currentUser.admin){ %>
     
                         <a class="btn btn-warning" href="/campgrounds/<%= campground.slug %>/edit">Edit</a>
     
@@ -187,7 +187,7 @@
                                     <p><%= comment.text %></p>
                                 
 
-                                    <% if (currentUser && currentUser._id.equals(comment.author.id) || currentUser.admin) { %>
+                                    <% if(currentUser && currentUser._id.equals(comment.author.id) || currentUser && currentUser.admin){ %>
 
                                         <a class="btn btn-xs btn-warning" role="button" data-toggle="collapse" href="#collapseEdit<%= comment._id %>" aria-expanded="false" aria-controls="collapse<%= comment._id %>">Edit</a>
 
@@ -214,7 +214,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <button class="btn btn-warning btn-sm">Edit comment <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></button>
+                                                <button class="btn btn-warning btn-sm">Edit comment <i class="fas fa-comment"></i></span></button>
                                             </div>
                                         </form>
 
