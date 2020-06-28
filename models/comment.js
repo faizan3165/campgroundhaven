@@ -1,4 +1,5 @@
 var mongoose = require("mongoose");
+    
 
 var commentSchema = ({
     text: String,
@@ -15,4 +16,5 @@ var commentSchema = ({
     },
 }); 
 
-module.exports =  mongoose.model("Comment",commentSchema);
+var Comment = mongoose.model("Comment", commentSchema);
+module.exports = Comment;

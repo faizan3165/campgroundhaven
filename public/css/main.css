@@ -9,7 +9,7 @@ label {
 
 
 h1 {
-    color: wheat;
+    color: whitesmoke;
 }
 
 
@@ -41,7 +41,7 @@ body {
 
 
 .commentForm {
-    border: 2px solid red;
+    border: 2px solid rgb(253, 228, 86);
     
 }
 
@@ -99,7 +99,7 @@ body {
 
 
 .card-title {
-    color: antiquewhite;
+    color: rgb(253, 227, 192);
 }
 
 
