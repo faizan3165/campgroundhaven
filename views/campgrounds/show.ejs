@@ -63,7 +63,7 @@
                         <%= campground.description %>
                     </p>
 
-                    <% if(currentUser && comment.author.id.equals(currentUser._id) || currentUser && currentUser.admin){ %>
+                    <% if(currentUser && campground.author.id.equals(currentUser._id) || currentUser && currentUser.admin){ %>
 
                     <a class="btn btn-warning" href="/campgrounds/<%= campground.slug %>/edit">Edit</a>
 
