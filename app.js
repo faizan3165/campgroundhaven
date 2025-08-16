@@ -1,7 +1,8 @@
 // VARIABLES
 // ========================================================
 require("dotenv").config();
-var Campground      = require("./models/campgrounds"),
+var path            = require("path"),
+    Campground      = require("./models/campgrounds"),
     Comment         = require("./models/comment"),
     methodOverride  = require("method-override"),
     LocalStrategy   = require("passport-local"),
@@ -41,9 +42,10 @@ mongoose.connect(process.env.DATABASEURL, {
 // APP CONFIG
 // ===================================================
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(__dirname + "/public"));
+app.use(express.static(path.join(__dirname, "public")));
 app.use(methodOverride("_method"));
 app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
 app.use(flash());
 // seedDb();
 // ===================================================

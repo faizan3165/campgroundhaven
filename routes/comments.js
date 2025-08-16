@@ -9,7 +9,7 @@ router.get("/new", middleware.isLoggedIn, function(req, res){
     Campground.findOne({slug: req.params.slug}, function(err, campground){
         if(err){
             req.flash("error", err.message);
-        } else {  
+        } else {
             res.render("comments/new", {campground: campground});
         }
     })
@@ -77,4 +77,4 @@ router.delete("/:comment_id", middleware.commentOwnership, function(req, res){
     });
 });
 
-module.exports = router;    
+module.exports = router;
